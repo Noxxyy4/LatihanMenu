@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Sidebar Menu</title>
+</head>
+<body>
+    <div class="container">
+        <div id="sidebar" class="container-sidebar">
+            <ul class="menu-group">
+                <li onclick="changeActive(0)" class="active">
+                    <a href="#">
+                        <i class="fas fa-home"></i>
+                        Home
+                    </a>
+                </li>
+                <li onclick="changeActive(1)">
+                    <a href="#">
+                        <i class="fas fa-question-circle"></i>
+                        About
+                    </a>
+                </li>
+                <li onclick="changeActive(2)">
+                    <a href="#">
+                        <i class="fas fa-calender-alt"></i>
+                        Events
+                    </a>
+                </li>
+                <li onclick="changeActive(3)">
+                    <a href="#">
+                        <i class="fas fa-sliders-h"></i>
+                        Services
+                    </a>
+                </li>
+                <li onclick="changeActive(4)">
+                    <a href="#">
+                        <i class="fas fa-envelope"></i>
+                        Concatc
+                    </a>
+                </li>
+            </ul>
+            <ul class="menu-themes">
+                <li>
+                   <i id="dark-mode" class="fas fa-moon"></i> 
+                </li>
+                <li>
+                   <i id="light-mode" class="fas fa-sun"></i> 
+                </li>
+            </ul>
+
+            <div class="time-wrapper">
+                <span class="time-shadow" id="time"></span>
+            </div>
+            <div id="btns-group" class="menu-btn">
+                <i id="btn-close" class="fa fa-time"></i>
+                <i id="btn-open" class=" fas fa-bars"></i>
+            </div>
+        </div>
+        
+        <script>
+            const sidebar = document.getElementById("sidebar");
+            const btnClose = document.getElementById("btn-close");
+            const btnOpen = document.getElementById("btn-open");
+            const btnLightMode = document.getElementById("light-mode");
+            const btnDarkMode = document.getElementById("dark-mode");
+            const elemsidebar = document.getElementById("sidebar");
+            const listsidebar = document.getElementById("a");
+            const elembody = document.getElementById("body") [0];
+            const timer = document.getElementById("time");
+
+            const sidebarOpen = () => {
+                sidebar.style.display = "block";
+                btnClose.style.display = "block";
+                btrnOpen.style.display = "none";
+            };
+
+            const sidebarClose = () => {
+                sidebar.style.display = "none";
+                btnClose.style.display = "none";
+                btrnOpen.style.display = "block";
+            };
+
+            const enableLightMode = () => {
+                elembody.style.background = "#f5f5f5";
+                elemenSider.style.background = "#e1e9ee";
+                btnLightMode.style.color = "#fff";
+                btnDarkMode.style.color = "#0077b5";
+                timer.style.color = "#000"
+
+                for (let i = 0; i < listsidebar.leght; i++) {
+                    listsidebar[i].style.color = "#000";    
+                }
+            };
+
+            const enableDarkMode = () => {
+                elembody.style.background = "#eie9ee";
+                elemenSider.style.background = "#283e4a";
+                btnLightMode.style.color = "#fff";
+                btnDarkMode.style.color = "#0077b5";
+                timer.style.color = "#fff"
+
+                for (let i = 0; i < listsidebar.leght; i++) {
+                    listsidebar[i].style.color = "#fff";    
+                }
+            };
+
+            btnOpen.addEventListener("click",sidebarOpen);
+            btnClose.addEventListener("click",sidebarClose);
+            btnLightMode.addEventListener("click",enableLightMode);
+            btnDarkMode.addEventListener("click",enableDarkMode);
+
+            setInterval (() => {
+                const time = new Date;
+                let seconds = time.getSeconds();
+                let minutes = time.getMinutes();
+                let hours = time.getHours();
+                let day = time.getDay();
+
+                switch(day){
+                    case 0: day = "sun"; break;
+                    case 1: day = "mon"; break;
+                    case 2: day = "tue"; break;
+                    case 3: day = "wen"; break;
+                    case 4: day = "thu"; break;
+                    case 5: day = "fri"; break;
+                    case 6: day = "sat"; break;
+                }
+
+                if (seconds == 0 || seconds < 10) 
+                    seconds = `0${seconds}`;
+                    if (minutes == 0 || minutes < 10) 
+                    seconds = `0${minutes}`;
+
+                const timer = document.getElementById("time");
+                    timer.innerHTML = `${day}, ${hours}:${minutes}:${seconds}`;
+                    document.getElementsByTagName("li");
+
+                    for (let i = 0; i < list.length; i++) {
+                        list[i].className = "";
+                    }
+                    list[value].className = "active"
+            })
+        </script>
+    </div>
+</body>
+</html>
